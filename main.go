@@ -19,6 +19,9 @@ type LoginN struct {
 
 func main() {
 	router := gin.Default()
+	router.GET("/", func(c *gin.Context) {
+		c.JSON(http.StatusOK, gin.H{"status": http.StatusText(http.StatusOK)})
+	})
 	router.POST("/loginJSON", func(c *gin.Context) {
 		var json Login
 		if err := c.ShouldBind(&json); err != nil {
